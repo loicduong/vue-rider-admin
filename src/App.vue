@@ -1,20 +1,15 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useConfigStore } from '@/store/modules/ConfigModule'
-import { defineComponent, onMounted } from 'vue'
+import { onMounted } from 'vue'
 
-export default defineComponent({
-  name: 'App',
-  setup() {
-    const configStore = useConfigStore()
+const configStore = useConfigStore()
 
-    onMounted(() => {
-      /**
-       * this is to override the layout config using saved data from localStorage
-       * remove this to use config only from static config (@/core/config/DefaultLayoutConfig.ts)
-       */
-      configStore.overrideLayoutConfig()
-    })
-  },
+onMounted(() => {
+  /**
+   * this is to override the layout config using saved data from localStorage
+   * remove this to use config only from static config (@/core/config/DefaultLayoutConfig.ts)
+   */
+  configStore.overrideLayoutConfig()
 })
 </script>
 

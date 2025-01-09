@@ -20,7 +20,6 @@ onMounted(() => {
 <style lang="scss">
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import '@vueform/multiselect/themes/default.css';
-@import 'prism-themes/themes/prism-shades-of-purple.css';
 @import 'sweetalert2/dist/sweetalert2.css';
 @import 'element-plus/theme-chalk/index.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';

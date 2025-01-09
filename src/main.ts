@@ -16,7 +16,6 @@ import { initInlineSvg } from '@/core/plugins/inline-svg'
 import { initVeeValidate } from '@/core/plugins/vee-validate'
 
 import '@/core/plugins/keenthemes'
-import '@/core/plugins/prismjs'
 import 'bootstrap'
 
 const app = createApp(App)

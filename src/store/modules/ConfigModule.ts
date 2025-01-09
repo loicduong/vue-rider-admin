@@ -1,7 +1,6 @@
 import type LayoutConfigTypes from '@/core/config/LayoutConfigTypes'
 import layoutConfig from '@/core/config/DefaultLayoutConfig'
-import merge from 'deepmerge'
-import objectPath from 'object-path'
+import { get, merge } from 'lodash'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
@@ -10,7 +9,7 @@ export const useConfigStore = defineStore('config', () => {
   const initial = ref<LayoutConfigTypes>(layoutConfig)
 
   function getLayoutConfig(path = '', defaultValue?: any) {
-    return objectPath.get(config.value, path, defaultValue)
+    return get(config.value, path, defaultValue)
   }
 
   function setLayoutConfig(payload: LayoutConfigTypes) {

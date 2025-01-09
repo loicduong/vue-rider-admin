@@ -1,11 +1,25 @@
 <script setup lang="ts">
-import { CountTo } from 'vue3-count-to'
+import { useTransition } from '@vueuse/core'
+import { ref } from 'vue'
 
 interface Props {
   classes?: string
 }
 
 defineProps<Props>()
+
+const businesses = ref(0)
+const businessesValue = useTransition(() => businesses.value, { duration: 3000 })
+
+const reports = ref(0)
+const reportsValue = useTransition(() => reports.value, { duration: 3000 })
+
+const payments = ref(0)
+const paymentsValue = useTransition(() => payments.value, { duration: 3000 })
+
+businesses.value = 700
+reports.value = 80
+payments.value = 35
 </script>
 
 <template>
@@ -30,17 +44,9 @@ defineProps<Props>()
               <!-- begin::Text -->
               <div class="mt-1">
                 <!-- begin::Animation -->
-                <div
-                  class="
-                    fs-lg-2hx fs-2x
-                    fw-bolder
-                    text-gray-800
-                    d-flex
-                    align-items-center
-                  "
-                >
+                <div class="d-flex align-items-center">
                   <div class="min-w-70px">
-                    <CountTo :start-val="0" :end-val="700" suffix=" +" :duration="3000" />
+                    <ElStatistic :value="businessesValue" suffix=" +" />
                   </div>
                 </div>
                 <!-- end::Animation -->
@@ -78,7 +84,7 @@ defineProps<Props>()
                   "
                 >
                   <div class="min-w-50px">
-                    <CountTo :start-val="0" :end-val="80" suffix=" K+" :duration="3000" />
+                    <ElStatistic :value="reportsValue" suffix=" K+" />
                   </div>
                 </div>
                 <!-- end::Animation -->
@@ -117,7 +123,7 @@ defineProps<Props>()
                 >
                   <div class="min-w-50px">
                     <div class="min-w-70px">
-                      <CountTo :start-val="0" :end-val="35" suffix=" M+" :duration="3000" />
+                      <ElStatistic :value="paymentsValue" suffix=" M+" />
                     </div>
                   </div>
                 </div>
@@ -159,3 +165,15 @@ defineProps<Props>()
   </div>
   <!-- end::Statistics -->
 </template>
+
+<style lang="scss" scoped>
+:deep(.el-statistic__content) {
+  font-weight: bolder;
+  font-size: calc(1.325rem + 0.9vw);
+  color: var(--bs-gray-800);
+
+  @media (min-width: 1200px) {
+    font-size: 2.5rem;
+  }
+}
+</style>
